@@ -311,3 +311,17 @@ fragment Int
 fragment Digit
  : [0-9]
  ;
+
+fragment BYTE_UNIT: ('B' | 'KB' | 'MB' | 'GB' | 'TB') [Ii]?;
+fragment TIME_UNIT: ('ms' | 's' | 'm' | 'h' | 'd') [Ii]?;
+
+BYTE_SIZE: NUMBER (WS)* BYTE_UNIT;
+TIME_DURATION: NUMBER (WS)* TIME_UNIT;
+
+// Update parser rules
+byteSizeArg: BYTE_SIZE;
+timeDurationArg: TIME_DURATION;
+
+// Modify `value` rule to include new tokens
+value:
+  NUMBER | STRING | BOOLEAN | NULL | BYTE_SIZE | TIME_DURATION;
