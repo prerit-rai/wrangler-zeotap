@@ -57,3 +57,9 @@ public interface Token extends Serializable {
    */
   JsonElement toJson();
 }
+public enum TokenType {
+  // Existing types
+  NUMBER, STRING, BOOLEAN, NULL,
+  // New types
+  BYTE_SIZE, TIME_DURATION
+}
